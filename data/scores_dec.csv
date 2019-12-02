@@ -1,0 +1,17 @@
+﻿Algorithm,distance,scores
+LSTM-HAWKES with Nelder-Mead,d < 0,-0.687095651
+LSTM-HAWKES with Nelder-Mead,d >= 0,180.7987755
+LSTM-HAWKES with Conjugate Gradient,d < 0,-2.108189749
+LSTM-HAWKES with Conjugate Gradient,d >= 0,96.19007712
+LSTM-HAWKES with BFGS,d < 0,-0.853057545
+LSTM-HAWKES with BFGS,d >= 0,141.304634
+LSTM-HAWKES with SANN,d < 0,-0.671243559
+LSTM-HAWKES with SANN,d >= 0,151.2343647
+ Hawkes Intensity Process with coefficient 0.2,d < 0,0
+ Hawkes Intensity Process with coefficient 0.2,d >= 0,2348.205812
+ Hawkes Intensity Process with coefficient 0.4,d < 0,0
+ Hawkes Intensity Process with coefficient 0.4,d >= 0,898.5037044
+ Hawkes Intensity Process with coefficient 0.6,d < 0,0
+ Hawkes Intensity Process with coefficient 0.6,d >= 0,898.3801143
+ Hawkes Intensity Process with coefficient 0.8,d < 0,-3.606100373
+ Hawkes Intensity Process with coefficient 0.8,d >= 0,287.1550421

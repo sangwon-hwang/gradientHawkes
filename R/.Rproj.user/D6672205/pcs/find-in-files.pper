@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "~/R_Projects/8.Gradient_Hawkes/R",
+        "query" : "getCIF",
+        "regex" : false
+    }
+}
