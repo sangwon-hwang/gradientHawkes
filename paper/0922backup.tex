@@ -1,0 +1,1049 @@
+% Template for PLoS
+% Version 3.5 March 2018
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that 
+% no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+%\usepackage{algorithm}
+%\usepackage{algorithm2e}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+\usepackage{float}% If comment this, figure moves to Page 2
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% Use Unicode characters when possible
+\usepackage[utf8x]{inputenc}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+%\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+%\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+% Use the PLoS provided BiBTeX style
+\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+%\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\today}
+
+%% Include all macros below
+
+\newcommand{\lorem}{{\bf LOREM}}
+\newcommand{\ipsum}{{\bf IPSUM}}
+
+%% END MACROS SECTION
+
+%% Sangwon addede following packages
+
+\begin{document}
+\vspace*{0.2in}
+
+% Title must be 250 characters or less.
+\begin{flushleft}
+{\Large
+\textbf\newline{A LSTM-Hawkes Hybrid Model for Posterior Click Distribution Forecast in the Advertising Network Environment} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Sangwon Hwang\textsuperscript{1},
+Inwhee Joe\textsuperscript{1*}
+
+%  Name3 Surname\textsuperscript{2,3\textcurrency},
+%  Name4 Surname\textsuperscript{2},
+%  Name5 Surname\textsuperscript{2\ddag},
+%  Name6 Surname\textsuperscript{2\ddag},
+%  Name7 Surname\textsuperscript{1,2,3*},
+%  with the Lorem Ipsum Consortium\textsuperscript{\textpilcrow}
+
+\bigskip
+\textbf{1} Department of Computer Science and Engineering, Hanyang University, Seoul, South Korea
+\\
+%\textbf{2} Affiliation Dept/Program/Center, Institution Name, City, State, Country
+%\\
+%\textbf{3} Affiliation Dept/Program/Center, Institution Name, City, State, Country
+%\\
+\bigskip
+
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+% 
+% Remove or comment out the author notes below if they aren't used.
+%
+% Primary Equal Contribution Note
+%\Yinyang These authors contributed equally to this work.
+
+% Additional Equal Contribution Note
+% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
+%\ddag These authors also contributed equally to this work.
+
+% Current address notes
+%\textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+% \textcurrency b Insert second current address 
+% \textcurrency c Insert third current address
+
+% Deceased author note
+%\dag Deceased
+
+% Group/Consortium Author Note
+%\textpilcrow Membership list can be found in the Acknowledgments section.
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+* iwjoe@hanyang.ac.kr
+\end{flushleft}
+
+% Please keep the abstract below 300 words
+\section*{Abstract}
+Popularity forecast for specific user behaviors is a key task in the advertising technology since Key Point of Interests (KPIs) of advertisers are all certain events that users generate. However, as an effect of General Data Protection Regulation (GDPR), it becomes infeasible for Advertising Technology (Ad Tech) individuals to apply machine learning techniques based on user features to the popularity prediction. To overcome this challenge, we propose a new hybrid model for posterior click distribution forecast, named Long Short Term Memory (LSTM)-Hawkes, by combining a stochastic-based generative model and a machine learning-based predictive model. Also, due to innumerable requests and responses for mobile advertisement, easy implementation and computational efficiency are the most critical factors in the Ad Tech. To meet these requirements, we define gradient exponential kernel with just three hyper parameters and minimize residual. The proposed model has been tested with production data. The experimental results show that LSTM-Hawkes reduces the Mean Squared Error (MSE) by at least 27\% and up to 79\% in comparison to the existing Hawkes Process based algorithm HIP (Hawkes Intensity Process) as well as it improves the forecast accuracy 21.2\% in average.
+
+
+
+% Please keep the Author Summary between 150 and 200 words
+% Use first person. PLOS ONE authors please skip this step. 
+% Author Summary not valid for PLOS ONE submissions.   
+%\section*{Author summary}
+%Sangwon Hwang has worked for an advertising technology company InMobi from 2016 to 2018 and for KETI (Korea Electronics Technology Institute) in 2019. He is currently pursuing master’s degree in computer science at Hanyang University, Seoul, South Korea. His main researches include: Intelligent Networks, Machine Learning, Convex Optimization, and Performance Evaluation.\\
+%Inwhee Joe received his BS and MS in electronics engineering from Hanyang University, Seoul, Korea and his PhD in electrical and computer engineering from Georgia Institute of Technology, Atlanta, GA, in 1998. Since 2002, he has been a faculty member in the Department of Computer Science and Engineering at Hanyang University. His main researches include: Intelligent Networks, Machine Learning, Mobile Internet, and Performance Evaluation.
+%\linenumbers
+
+% Use "Eq" instead of "Equation" for equation citations.
+\section*{Introduction}
+%Lorem ipsum dolor sit~\cite{bib1} amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam Eq~(\ref{eq:schemeP}) sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id.~\cite{bib2} Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.\\
+For the first time in 2017, global digital advertisement expenditure was 41\% of the global advertising market, which exceeded the TV advertisement expenditure, by 6\%. Especially the mobile advertisement in digital marketing recorded 37.6\% of the global growth rate, which is an impressive increase, enough to draw attention in the worldwide advertisement market~\cite{bib1}. These reports~\cite{bib2,bib3,bib4} substantiate that the mobile advertising market is leading the growth in the global advertising market.\\
+As the mobile advertisement market has rapidly increased, mobile Advertising Technology (Ad Tech) has also become a highly significant area in the advertising market. In 2018, in the United States, Google and Facebook have respectively occupied 38.2\% and 21.8\% of the mobile advertisement market which is a significant than years before.\\
+% 얼만큼 증가했는 지 그 수치가 있으면 좋다. ~~~ % than before.
+	However, despite the rapid market growth, there are also some difficulties that Ad Tech faces. Since General Data Protection Regulation~\cite{bib5} has been actively enforced by the EU, machine learning techniques based on consumer information, which could be transferred between Ad Tech individuals before, is now currently restricted in European countries. Therefore to overcome this barrier, we suggest a generative model based on the Hawkes Process~\cite{bib6}, which forms a posterior predictive distribution of a specific event which has occurred in an advertising network. In contrast with the existing machine learning techniques used in Ad Tech~\cite{bib7, bib8}, we focus on a advertising network's (or an Ad Tech individual) click distribution; not a user’s Click Through Ratio (CTR), nor an advertisement’s click distribution. This is highly valuable from the advertiser’s perspective because a partnership with the right advertising network directly affects the success of their marketing strategy and vice versa (publisher and advertising network).\\
+	An advertising network's environment consists of three main parts. First there is the \ advertiser who wants to advertise, as well as provide the actual advertisement contents. Next, there is the publisher who provides the landing pages for the advertisement contents. Lastly there is the  advertising network that connects the advertiser and publisher together. Advertisers are grouped and managed in a system called the ‘Demand Side Platform' and publishers are grouped together in a a system called the  ‘Supply Side Platform'. Fig~\ref{fig1} simply describes the Ad Tech environment and its layers. \textbf{\textit{Between layers}}, due to the GDPR, user information including advertising IDs or any other unique device IDs from a mobile OS cannot be transferred.
+
+% For figure citations, please use "Fig" instead of "Figure".
+%Nulla mi mi, Fig~\ref{fig1} venenatis sed ipsum varius, volutpat euismod diam. Proin rutrum vel massa non gravida. Quisque tempor sem et dignissim rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at justo vitae nulla elementum commodo eu id massa. In vitae diam ac augue semper tincidunt eu ut eros. Fusce fringilla erat porttitor lectus cursus, \nameref{S1_Video} vel sagittis arcu lobortis. Aliquam in enim semper, aliquam massa id, cursus neque. Praesent faucibus semper libero.
+
+% Place figure captions after the first paragraph in which they are cited.
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{./architecture_fig1.png}
+\caption{{\bf Advertising Network Architecture}
+Using Charles, a debugging proxy server application [9], we captured and analyzed packets from an advertising network and found out that the advertising network environment has a multilayer structure with the cycle flow as shown above. Advertising network environment is composed of advertisers (DSP), suppliers (SSP), and advertising networks (Ad Network).}
+\label{fig1}
+\end{figure}
+
+%\includegraphics[width=5in, height=1in]{}
+%\includegraphics[scale=0.25]{}
+
+%\begin{eqnarray}
+%\label{eq:schemeP}
+%	\mathrm{P_Y} = \underbrace{H(Y_n) - H(Y_n|\mathbf{V}^{Y}_{n})}_{S_Y} + \underbrace{H(Y_n|\mathbf{V}^{Y}_{n})- H(Y_n|\mathbf{V}^{X,Y}_{n})}_{T_{X\rightarrow Y}},
+%\end{eqnarray}
+
+\section*{Materials and methods}
+
+\subsection*{Formulation and Preliminary Theory}
+When a random variable following a Bernoulli process which is the time of occurrence (or success) in Bernoulli trials approaches to Positive infinity, it is infeasible to calculate the probability of a specific event occurrence due to the computational complexity. Therefore, to solve this problem, in modeling a posterior distribution of either prediction or simulation, most conventional statistical approaches have adopted ‘Binomial Approximation to Poisson' which helps find probability of an independent trial in various fields~\cite{bib28, bib29, bib30}. 
+However, the ‘Binomial Approximation to Poisson' has Memoryless Property~\cite{bib10} because each trial is independent (Independent Increment) and the probability does not change (Stationary Increment). Thus, only event process with non-overlapping intervals can used in the Binomial Approximation to Poisson in modeling a distribution.\\
+In a click event distribution, where the event occurence time is $t_i$ of set $\textrm{T}_j=\left \{{t_1, t_2, \cdots, t_n}  \right \}$, inter-arrival time $l_i$ of set $L_i=\left \{ l_1, l_2, \cdots, l_n \right \}$ can be written as follows 
+$$
+t_{n-1}\leq l_n<t_n \ \ \Rightarrow l_n=[t_{n-1},t_n).
+$$
+
+And, we can easily find the concurrent occurrences in any advertising click distribution. To solve memoryless property and handle overlapping intervals, we propose a generative model based on a self-exciting process, a type of non-homogenous process, called Hawkes. In this chapter, we provide mathematical induction from binomial distribution to Hawkes process to derive memory kernel of Hawkes.
+\newline
+\newline
+\textbf{Binomial Approximation to Poisson.	}
+Suppose that a random variable $X$ follows binomial distribution $B(n,p)$, and that the expected value of $X$ is $\lambda$. When $n$ is close to infinity, $\lambda$ approximates to $np$ and by binomial approximation to the Poisson distribution, the probability of $X$ approximates to the probability mass function of a Poisson distribution.
+\begin{align*}
+f(x)&=(n!/x!(n-x)!)(\lambda / n)^{x}((1-\lambda)/n)^{n-x}, \\
+\lim_{n\rightarrow \infty }f(x)&=(\text{exp}^{\lambda}\lambda^x)/x! \quad \small where  \ \ X \sim B(n,p).
+\end{align*}
+\textbf{Process.}
+When time unit expands or reduces to by $t\ (t>0)$, the average event occurrences becomes $\lambda t$ during the updated time unit where the average occurrences per default time unit is $\lambda=np$. Distribution with expanded (or reduced) time unit by $t$ is called Process. And, correspondingly, PDF of the process becomes
+\begin{align}
+\label{eq:1}
+f(x, \lambda t)=(\text{exp}^{-\lambda t}(\lambda t)^{x}/x!.
+\end{align}   
+\textbf{Poisson Distribution and Exponential Distribution.	}
+Suppose that time period for a specific event to take place is a probability variable $t$ and that $T$ is the time when a specific event $X_T$ takes place. Under this circumstance, the probability of that event $X_T$ occurs after $t$ is equal to that the event $X_T$ does not take place within $t$. The PDF of Poisson distribution becomes following equation
+\begin{align}
+\label{eq:2}
+P(t<T)=f(X_T=0, \lambda t)= (\text{exp}^{\lambda t} (\lambda t)^0)/0!=\text{exp}^{-\lambda t}.
+\end{align}\\   
+Set Eq~(\ref{eq:2}) as $S(t)$ then, the probability of that event $X_T$ occurs is $1-S(t)$ which is cumulative distribution function (CDF) for the probability variable $t$. Set this function as $F(t)$ as following Eq~(\ref{eq:3}) 
+\begin{align}
+\label{eq:3}
+F(t)=P(0 \leq T \leq t)=1-\text{exp}^{-\lambda t}.
+\end{align} \\   
+Since derivative of CDF is PDF, PDF for the random variable t is
+\begin{align}
+\label{eq:4}f(t)=\frac{d}{dt}F(t)=\lambda \text{exp}^{-\lambda t}.
+\end{align}   
+
+Finally, it is concluded that the probability variable $t$ follows exponential distribution with $f(t)$ and $F(t)$, PDF and CDF respectively.
+\newline
+\newline
+\textbf{Non-Homogeneous Poisson Process.		}
+In Poisson Process, lambda intensity function $\lambda(t)$ determines the average event occurrence $\lambda$ per time unit. If $\lambda(t)$ is constant then, the process is homogeneous and if not, the process is non-homogeneous.\\
+In non-homogenous Poisson process, lambda intensity function $\lambda(t)$ is the instantaneous rate at which events occur, defined as the expected rate of arrivals conditioned on associated history up to time $t$, $H_t$, divided by during $\Delta t$ as Eq~(\ref{eq:3}) 
+\begin{align}
+\label{eq:5}
+\centering
+\lambda(t)=&\lim_{\Delta t\rightarrow 0}E(N(t+\Delta t)-N(t)|H_t)/\Delta t
+\end{align}	
+\\where $N(T)$, a counting process, is number of event occurrences during $T$.\newline\newline
+\textbf{Hawkes Process and its Memory Kernel.	}
+Since arrival of an event in self-exciting process causes the conditional intensity function Eq~(\ref{eq:5}) to increase, it needs to re-define using memory kernel. The integrated function $\phi$ is Memory Kernel in the followings where input data are discrete and continuous respectively
+\begin{align}
+\centering
+\lambda(t)&=\mu +\sum_{}^{t}\phi(t-T)dN(T), \nonumber \\
+\lambda(t)&=\mu +\int_{}^{t}\phi(t-T)dN(T). \nonumber
+\end{align}   
+\\ Commonly used memory kernels with Hawkes process are Exponential kernel, original model proposed by Hawkes, and Power Law kernel, frequently used in social network model~\cite{bib11, bib12, bib13}, proposed by Ozaki~\cite{bib14}.
+\begin{align}
+\label{eq:6}
+\phi(t-T)&=\alpha e^{-\delta(t-T)}, \\
+\label{eq:7}	
+\phi(t-T)&=km^\beta(t-T+c)^{-(1+\theta)}. 
+\end{align}   
+%\newline
+\subsection*{LSTM-Hawkes Hybrid Model}
+The maximum likelihood estimation using exponential Kernel has a problem with residuals which become multiplied by real numbers depending on the batch size. We solved this problem by scaling cumulative intensity value of the kernel with differential coefficient $\gamma$ that minimizes the residuals, defined Gradient Exponential Kernel Eq~(\ref{eq:10}).\\ 
+Also, to forecast posterior event time $t_i$, we adapted Long-Short Term Memory (LSTM)~\cite{bib15} instead of Thinning algorithm~\cite{bib16}, dominantly used for sampling with Hawkes, for accuracy enhancement.\\ In this chapter, we first list all variables and parameters used in the proposed model and define suggested memory kernel. And, in Sampling Method, we show the test result that proves LSTM is more accurate than Thinning algorithm. Lastly, we suggest LSTM-Hawkes Forecast algorithm [Flow Diagram of LSTM-Hawkes] which combines the generative model with LSTM sampling to draw the posterior process of advertising click event.
+Gradient exponential kernel is defined as Eq~(\ref{eq:10}), and the code implemented with consecutive loops of while, notated in a pseudo code of Algorithm~\ref{algorithm1},~\ref{algorithm2},~\ref{algorithm3}, and ~\ref{algorithm4} where the domain for the memory kernel satisfies $t_i \in  eP$ as following
+\begin{align}
+\label{eq:8}
+\centering
+\phi(t-t_i)&=\gamma \alpha e^{-\delta(t-t_i)} \quad where\ t \in eP. 
+\end{align}   
+
+\begin{table}[H]
+\caption{ {\bf Definitions}}
+ \begin{tabular}{|c|l|}
+ \hline
+ \multicolumn{1}{|c|}{\bf Parameter} & \multicolumn{1}{|l|}{\bf Interpretation}\\ \thickhline
+	$eP_j$ & Evaluation Point, as argument of $\lambda(t)$ \\ \hline
+	$eP$ & Set of $eP_j$, equal to domain of $t$ $\lambda(t)$ \\ \hline
+	$J$ & The index of the last element of the set $eP$ \\ \hline
+
+	$t_i$ & Observed event time\\ \hline
+	$T$ & Set of $t_i$ \\ \hline
+	$I$ & The index of the last element of the set $T$ \\ \hline
+
+	$eP_j^{'}$ & Evaluation Point, as argument of $\lambda(t)$ for the predictive period \\ \hline
+	$eP^{'}$ & Set of $eP_j$, equal to domain of $t$ $\lambda(t)$ for the predictive period \\ \hline
+	$J^{'}$ & The index of the last element of the set $eP^{'}$ \\ \hline
+
+	$t_i^{'}$ & Forecasted event time \\ \hline
+	$T^{'}$ & Set of $t_i^{'}$ \\ \hline
+	$I^{'}$ & The index of the last element of the set $T^{'}$ \\ \hline
+
+	$\tau_n$ & Distance $[t_i, eP_j)$ such that $t_i \leq eP_j$  \\ \hline	
+	$\gamma$ & Differential coefficient earned by gradient descent \\
+	& using MSE as objective function
+	  \\ \hline	
+	$\mu$ & Expected value of lambda intensity during a time unit period \quad \quad\quad \ \\ \hline
+	$\theta$ & $S_t$ of parameters  \\ \hline	
+	$L(\theta)$ & Likelihood with parameters $\theta$ \\ \hline
+	$l(\theta)$ & Log likelihood function with parameters $\theta$	\\ \hline
+	$CIF$ & Cumulative intensity function \\ \hline 
+ \end{tabular}
+ \label{table1}
+ \end{table} $\newline$
+\textbf{Hyper Parameter Estimation.	}
+Definition of the lambda intensity function $\lambda (t)$ in non-homogeneous processes was presented in the subchapter ‘Formulation and Preliminary Theory' as Eq~(\ref{eq:5}) as well as we derive our own memory kernel as Eq~(\ref{eq:8}). By minimizing negative log likelihood (NLL) over the observed data, hyper parameters for the memory kernel can be achieved. Driven by Rasmussen~\cite{bib17}, it is discovered that Eq~(\ref{eq:9}) makes sense by Eq~(\ref{eq:2}), Eq~(\ref{eq:3}) and Eq~(\ref{eq:4}). 
+\begin{align}
+\label{eq:9}
+\lambda(t)&=f(t)^{'}/S(t)^{'}=f(t)^{'}/(1-F(t)^{'}), \nonumber	\\
+f(t)^{'}&=\lambda(t)(1-F(t)^{'}),
+\end{align}   \\
+where $f(t)$ is PDF of homogeneous Poisson process Eq~(\ref{eq:4}) and $f^{'}(t)$ is conditional probability on associated history up to $t_{i-1}$ which is $f^{'}(t)=\prod_{i=1}^{T}f(t_i|H_{i-1})$. Thus, Eq~(\ref{eq:2}) and Eq~(\ref{eq:3}) can also be re-defined by $f^{'}(t)$ as $S^{'}(t)$ and $F^{'}(t)$ respectively.
+\\
+Correspondingly, likelihood function for Hawkes can be derived as Eq~(\ref{eq:10}) and its log likelihood function as Eq~(\ref{eq:11}), driven by Rubin~\cite{bib18}
+\begin{align}
+\label{eq:10}
+\centering
+L(t_i|\theta)&=\prod_{i=1}^{T}f^{'}(t_i|\theta)=\prod_{i=1}^{T}\lambda(t_i|\theta)(1-F^{'}(t_i|\theta)),
+\end{align}  
+\begin{align}
+\label{eq:11}
+\centering
+l(t_i | \theta)&=-\int_{0}^{T}\lambda(t_i|\theta)dt_i+
+\int_{0}^{T}log\lambda(t_i|\theta)dt_i.
+\end{align}  
+
+Therefore, when $eP_j$ is the domain for the random variable $t$ with PDF $f^{'}(t)$ and the memory kernel is Eq~(\ref{eq:8}), we can derive NLL function for Gradient Exponential Kernel as follows
+%
+\begin{align}
+\label{eq:12}
+\centering
+-l(\tau_1, \dots, \tau_n|\theta)&=\mu\cdot\tau_n-\sum_{m=1}^{n}(\gamma\alpha/\delta)(e^{-\delta\cdot\tau_m}-1)-\sum_{m=1}^{n}log(\mu+\gamma\alpha A(m)),
+\end{align} 
+\\
+where $A(m)=\sum_{t_i<eP_m}e^{-\delta(ep_m-t_i)} \ \ \text{for} \ \ i\geq 2$, $t_i$ denotes the event time and A(1) is equal to $0$. In our proposed model, optimization is proceeded by minimizing the negative log likelihood Eq~(\ref{eq:12}).
+\newline
+\newline
+\textbf{Sampling Method.	}
+The evaluation of the sampling result is analyzed by residual distribution. Fig~\ref{fig2} demonstrates that LSTM’s sampling residual is conspicuously closer to $f(x)=0$ than that of Thinning. It is concluded that the prediction of the event time in posterior distribution of LSTM is more accurate than that of Thinning and thinning is preferred to use for simulation based on lambda intensity function. 
+%
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{./fig2.png}
+\caption{{\bf Dispersion of Residuals}
+Residual variance of Thinning is 
+160.526022455 while	that of LSTM is
+0.134012729718.}
+\label{fig2}
+\end{figure}$ \newline $
+\textbf{LSTM-Hawkes Model.	}
+%$\newline$
+%\centering
+\tikzstyle{block}=[draw, rectangle, fill=white!20, text centered, node distance=2.5em, minimum width={width("Forecasting posterior event timeecasting posterior event time")}]
+\tikzstyle{line}=[draw, -latex’]
+\tikzstyle{arrow}=[thick,->,>=stealth]
+%$\newline$
+ \begin{center}
+ \begin{tikzpicture}
+  \node[block](Process1) {\ \ \ \bf Model Configuration\ \ \ }; 
+  \node[block, below of = Process1](Process2) {\ \ \ \bf Parameter Optimization\ \ \ };
+  \node[block, below of = Process2](Process3) {\quad \quad \quad \quad \bf Earning Differential Coefficient $\boldsymbol{\gamma}$\quad \quad \quad \quad \ };
+  \node[block, below of = Process3](Process4) {\bf Forecasting posterior event time \bf $\boldsymbol{t_i^{'}}$ and draw $\boldsymbol{\lambda(t_i^{'})}$ };
+  \draw [arrow] (Process1) -- (Process2);
+  \draw [arrow] (Process2) -- (Process3);
+  \draw [arrow] (Process3) -- (Process4);
+%  \node [below=0.5cm, align=flush center,text width=8cm] at (Process4)
+%        {	\textbf{Flow Diagram of LSTM-Hawkes}	};
+ \end{tikzpicture}
+ \end{center}
+%$\newline$
+\textbf{Flow Diagram 1. LSTM-Hawkes		}consist of four simple sub-algorithms.	
+%
+%$ \newline $ 
+\begin{algorithm}[H]
+ \KwData{Observed data set $t_i$}
+ \KwResult{$\lambda (eP_j)$}
+ $\ \ d \leftarrow (t_n - t1)/K$\\ 
+ $\ \ \triangleright \ Set\ an\ equal\ interval.\ K\ is\ size\ of\ set\ eP$\\
+ $\ \ eP_1 \leftarrow t_1$\\ 
+
+ \While{$(2 \leq j \leq K)$}{  
+ 	 $eP_j \leftarrow t_1 + (j-1)d$\\ 
+ 	 $j=+1$} 
+
+$\newline\alpha, \delta \leftarrow \alpha_1 , \delta_1$ \\
+ $\ \ \triangleright	\ Hyper\ parameter\ setup$\\
+  \caption{\bf Model Configuration} 
+  \label{algorithm1}
+\end{algorithm}
+%$$ \newline \newline $$
+%
+\begin{algorithm}[H]
+ \KwData{$\lambda (eP_j)$}
+ \KwResult{$\alpha, \delta, \gamma$}
+  $\ \ l(\theta) \leftarrow Eq(13)$\\
+  $\ \ \triangleright \ Set\ log\ likelihood.\ l(\theta)$\\
+
+ \While{$(Not\ converged)$}{
+  $\newline$
+  $Run\ optimization\ function\ minimizing\ -l(\theta)$}
+  $\newline Return\ Parameters\ of\ gradient\ exponential\ kernel\ \alpha,\ \delta$\\
+  
+ \caption{\bf Model Optimization}
+ \label{algorithm2}
+\end{algorithm} 
+
+%$$ \newline \newline $$
+
+%
+\begin{algorithm}[H]
+ \KwData{Observed data $t_i$}
+ \KwResult{$\gamma$}
+ 
+  \For{$j=1; \ j \leq J; \ j++ $}{
+	\For{$i=1; \ t_i \leq eP_j; \ i++ $}{
+%		\lambda($ep_j - t_i$)
+		$CIF.Append(\lambda(ep_j - t_i))$ 
+	} } 
+%$$\newline$$		
+ 	$\  CIF \leftarrow Sum\ of\ CIF\ values\ by\ minute$ 
+	$OriginalIntensity \leftarrow Sum\ of\ observed\ event\ number\ by\ minute$
+	$n \leftarrow size\ of\ CIF$\\
+%$$\newline$$	
+ \While{$(1 \leq j \leq n)$}
+ {Residuals = $Original_Intensity_i - CIF_i$\\
+  $Optimization\ of\ Gradient\ Descent\ using\ MSE\ as\ loss\ function$\\
+  $Return\ \gamma$}
+ \caption{\bf Earning Differential Coefficient $\boldsymbol{\gamma}$}
+ \label{algorithm3}
+\end{algorithm}
+
+%$$ \newline \newline $$
+
+\begin{algorithm}[H]
+ \KwData{$CIF\ of\ gradient\ hawkes$}
+ \KwResult{$CIF \ for \ [t_1,\ t_n^{'})$}
+ $\ \ T^{'} \leftarrow \ LSTMSampling(T,\ predictionPeriod)$\\
+%  $\ \ T^{'}.add()\newline$\\
+
+% $\ \ T_i^{'}\newline$\\
+ $\ \ d \leftarrow (t^{'}_n - t^{'}_1)/K^{'} $\\
+ $\ \  \triangleright \ Set\ an\ equal\ interval.\ K^{'}\ is\ size\ of\ set\ eP^{'}$\\
+ $\ \ eP_1^{'} \leftarrow t_1^{'}$\\
+ \While{$(2 \leq j \leq K^{'})$}{  
+ 	 $eP_j^{'} \leftarrow t_1^{'} + (j-1)d$\\ 
+ 	 $j=+1$} 
+ $\newline$
+ \For{$j=1; \ j \leq J^{'}; \ j++ $}{
+	\For{$i=1; \ t_i^{'} \leq eP_j^{'}; \ i++ $}{
+%		\lambda($ep_j - t_i$)
+		$CIF.Append(\lambda(ep_j^{'} - t_i^{'}))$ } }  
+ 
+% $\ \ CIF.Append(T_i^{'})$\\
+ $\ \ Return\ CIF $ \\ % \lambda([t_i, \ t_i^{'}])
+ $\ \ \triangleright\	CIF \ for \ [t_1,\ t_n^{'})$\\
+ \caption{\bf Forecasting posterior event time $\boldsymbol{t_i^{'}},\ \boldsymbol{\lambda(t_i^{'})}$}
+ \label{algorithm4}
+\end{algorithm}
+LSTM-Hawkes is made up of four consecutive steps, A) model configuration, B) parameter optimization by minimizing Eq~(\ref{eq:12}), C) finding derivative $\gamma$ which minimize residual error, and D) forecast event times during the prediction period and draw $\lambda(t)$ (Flow Diagram 1). 
+%for the time of both observed and predicted period.
+Those steps and each algorithm are described in Algorithm~\ref{algorithm1},~\ref{algorithm2},~\ref{algorithm3}, and ~\ref{algorithm4} as pseudo codes above. In the Algorithm 1, we chose evaluation points by dividing the distance  $[t_1, t_n)$ with the size of $eP$ which means at the implementation level, $\Delta t$ which is $t-t_i$ in the Eq~(\ref{eq:8}), is equal to $\tau_n$. After that, the hyper parameters are defined with the initial values and optimization is proceeded. In the Algorithm 4, by calculating lambda intensity with the results from LSTM prediction $T^{'}_i$, our model finally draws cumulative intensity values for $[t_1, t_n^{'})$ 
+
+%we calculate the $\lambda(\delta t)$ where the
+%$\newline \newline \newline \newline	$
+% Results and Discussion can be combined.
+%$\newline \newline \newline$
+\section*{Results and analysis}
+\textbf{Data.	}Criteo, an Ad Tech company, possesses cutting edge user re-targeting technology and has led the development of prediction methods based on machine learning algorithms. They have also notably hosted the Kaggle's CTR forecast competition in 2014 and 2015. We applied the click and conversion data sets provided by the Criteo Lab and compared the results between the the model/algorithm proposed and the HIP (Hawkes Intensity Process algorithm)~\cite{bib21} algorithm. We evaluated the forecasting accuracy of the posterior distribution of a click event from a single advertising network. \newline \newline
+%
+\textbf{Goodness of Fit.	}Residual analysis~\cite{bib19} is a reliable measurement for the Hawkes model and has been widely used to evaluate the precision of a fit. 
+Let $t_i$ be a point process with intensity $\lambda(t_i)$ whose PDF is Eq~(\ref{eq:10}) and $s_i$ is equal to $\lambda(t_i)$ of Eq~(\ref{eq:5}), then $s_i$ is a unit rate Poisson process transformed by a Hawkes model. Thus, if the model fits well, the transformed process should resemble a unit Poisson process. Also, the residual’s inter-event time is supposed to be an independent exponential variable. Therefore, log-log-plot of the residual’s inter-event time should be close to the linear line. Fig~\ref{fig3} shows the log-log-plot of the residual inter-event time from the LSTM-Hawkes model and it proves that the shape of the distribution is very close to the linear line. Also, the first quintile of residual’s inter-event times are distributed the most. Thus, we can conclude that the LSTM-Hawkes model is an excellent way to determine a precise fit. \newline \newline
+%$\newline $
+\textbf{Compared Algorithm HIP.	}The HIP model is a Hawkes-based model that uses Power-Law-Kernel Eq~(\ref{eq:7}). HIP mathematically induces the expectation function $\xi(t)$ of $\lambda(t)$ referring to exogenous events to predict the number of occurrences of an event during the next time unit. In our test, an ad-click is set up as an endogenous event and conversion as an exogenous event. 
+\begin{align}
+%
+\xi(t)=Expectation \ of \ \lambda(t) \quad where \quad \lambda(t)=\mu s(t)+\sum_{t_i < t}km^{\beta}(\tau + c)^{-(l+\theta)}.
+\label{eq:13}
+\end{align}  
+%
+%
+\textbf{Error Score.	}$  $
+\begin{align}
+s=
+\begin{dcases}
+\sum_{i=1}^{n} e^{-(d/a_1)} -1 \quad for\ d < 0 \\
+\sum_{i=1}^{n} e^{(d/a_2)} -1 \quad for\ d \geq 0
+\end{dcases}
+\label{eq:14}
+\end{align}
+%$ \newline $
+Commonly used error measurements such as the Mean Squared Error (MSE), Mean Absolute Error (MAE), and the Root Mean Square Error (RMSE) are only designed to measure the raw residuals. However, different from these methods, scores metric~\cite{bib22} is devised to take the negative error into account, which reduces the error score when the residuals are less than a certain point. Not only does the score metric method discover how many residuals the model produces, but it is also able to discover how well the model fits and predicts.  In the experiment, we set up this certain point using the standard deviation of the observed data during the time period for the prediction. In the 1st test section, both $a_1$ and $a_2$ are 4.057 and in the 2nd test section both $a_1$ and $a_2$  are 7.495. The final score is the sum of each function conditioned on the distance mark.
+%
+%\begin{align}
+%s=
+%\begin{dcases}
+%\sum_{i=1}^{n} e^{-(d/a_1)} -1 \quad for\ d < 0 \\
+%\sum_{i=1}^{n} e^{(d/a_2)} -1 \quad for\ d \geq 0
+%\end{dcases}
+%\end{align}
+%$ \newline \newline $
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=3in]{./goodnessOfFit.png}
+%\caption{{\bf log-log-plot of residual’s interevent times}}
+%\label{fig3}
+%\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=3in]{./goodnessOfFit.png}
+\caption{{\bf log-log-plot of residual’s interevent times} 1000 events sampled.}
+\label{fig3}
+ \end{figure}
+
+%$ \newline $
+\textbf{Experimental Results.	} To asses the comparison between the HIP and LSTM Hawkes models, we selected two different sections where the moving average trend of the click is monotonically decreasing in the first section and increasing in the second section. Test results of the first section are presented in Fig 4, Fig 5, and table~\ref{table2}. Also, test results of the second section are presented in Fig 6, Fig 7, and table~\ref{table3}. For an accurate performance assessment of the HIP model, we chose several correlation coefficients so that the HIP model could show its accuracy in prediction, precision in fitting, as well as it's limitation in both the fitting and prediction. For the accuracy of our assessment we chose four equally dispersed correlation coefficients of 0.2, 0.4, 0.6, and 0.8. The observed click is the endogenous event, and the exogenous event is the observed conversion.  \\
+First, in the forecasting test in the first section, it shows that the forecast made using the LSTM-Hawkes model reduces 67.9\% of 
+MSE on average and at least 37.8\% compared to the HIP model where the correlation coefficient is 0.8. The forecasting test for the second section shows that LSTM-Hawkes reduces 62.3\% of MSE on average and at least 44.5\% compared to the HIP where the correlation coefficient is 0.6. Fig 4-(a) and Fig 4-(b) also shows the difference between the HIP and Hawkes models where a sudden drop occurs at the beginning part of prediction period. In contrast to HIP that does not follow the moving average due to the low correlation coefficient, LSTM-Hawkes follows the moving average closely, greatly reducing residuals. In fig 6-(a), HIP follows the moving average closely with a high coefficient (0.8) of exogenous data but still it's MSE is 26 points higher than that of LSTM-Hawkes. \\ 
+\begin{figure}[h]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\centering
+	\begin{subfigure}[b]{0.43\paperwidth}\includegraphics[width=0.43\paperwidth]{./4(a).png}
+\caption{\centering{\bf HIP where the coefficient of exogenous event is 0.2}}
+	\label{4-(a)}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.43\paperwidth}\includegraphics[width=0.43\paperwidth]{./4(b).png}
+	\caption{\centering{\bf LSTM-Hawkes with Nelder-Mead }}
+	\label{4-(b)}
+	\end{subfigure}
+\caption{{HIP with coefficient 0.2 shows the most MSE in HIP test in the 1st section (increasing trend) as same as LSTM-Hakwes with SANN does in LSTM-Hawkes Test. }}
+%As they are shown in the figure, while the forecast ability of HIP depend on correlation coefficient a lot, LSTM-Hawkes works standalone showing stable forecast capability.
+\end{adjustwidth}
+\label{fig4}\end{figure}
+
+\begin{figure}[H]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\centering
+	\begin{subfigure}[b]{0.43\paperwidth}\includegraphics[width=0.43\paperwidth]{./5(a).png}
+\caption{\centering{\bf HIP where the coefficient of exogenous event is 0.8}}
+	\label{fig5(a)}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./5(b).png}
+	\caption{\centering{\bf LSTM-Hawkes with Conjugate Gradient Descent}}
+	\label{fig5(b)}
+	\end{subfigure}
+\caption{{As correlation coefficient gets higher, HIP detects the sudden drop better. However since HIP $\xi(t)$ is the expectation value of $\lambda(t)$ with power-law decay, it tends to follow the trend rather than predict actual intensity value each time unit.}}
+\end{adjustwidth}
+\label{fig5}
+\end{figure}
+
+
+% Table 2 beginning
+\begin{table}[H]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\caption{{\bf MSE and Accuracy}}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{2}{|c|}{\bf HIP} &
+\multicolumn{2}{c|}{\bf LSTM-Hawkes}\\ \thickhline
+\textbf{Correlation Coefficient} &
+\textbf{MSE} & 
+\textbf{Method} & 
+\textbf{MSE}\\ \hline
+
+0.20045197016606 \quad \quad \quad \quad \quad & 
+272.86493629506 \quad \quad \quad \ \ & 
+Nelder-Mead & 
+55.3646851328 \quad \quad \quad \ \\ \hline
+
+0.40864585590557 & 
+167.08929263969 & 
+BFGS with Hessian Matrix & 
+31.8141777151\\ \hline
+
+0.60923578698778 & 
+166.47562141766 & 
+Conjugate Gradient Descent
+\quad \quad \quad \quad \quad & 
+44.5680031396\\ \hline
+
+0.80069927612292 & 
+75.905022392 & 
+SANN & 
+47.1453170336\\ \hline
+
+\multicolumn{2}{|c|}{Average Accuracy: 0.247342286175} &
+\multicolumn{2}{c|}{Average Accuracy: 0.531401427812}\\ \hline
+
+\end{tabular}
+\begin{flushleft} MSE and Accuracy where the trend of moving average is monotonically decreasing.
+\end{flushleft}
+\label{table2}
+\end{adjustwidth}
+\end{table}
+% Table 2 ending
+In the second section, although both HIP (coefficient 0.6) and LSTM-Hawkes show great performance in prediction as can be seen in Fig7, between 50 and 70 less-fitted parts are found with HIP while LSTM-Hawkes shows a stable goodness of fit. This gap is also shown in Fig 6-(a) as well. From the tests, we were able to verify that our proposed model of the LSTM-Hawkes significantly outperforms the HIP model in both the fitting and forecasting criteria. \\
+
+\begin{figure}[H]
+\label{fig6}
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\centering
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./6(a).png}
+\caption{\centering{\bf HIP where the coefficient of exogenous event is 0.8}}
+	\label{fig6(a)}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./6(b).png}
+	\caption{\centering{\bf LSTM-Hawkes with BFGS}}
+	\label{fig6(b)}
+	\end{subfigure}
+\caption{{Rather than predictive period, it needs to compare the observed time period more. Since an under-fitted part is found with HIP result, prediction performance is quite noticeable. }}
+\end{adjustwidth}
+\end{figure}
+
+% Table 3 beginning
+\begin{figure}[H]
+\label{7}
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\centering
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./7(a).png}
+\caption{\centering{\bf HIP where the coefficient of exogenous event is 0.6}}
+	\label{fig7(a)}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./7(b).png}
+	\caption{\centering{\bf LSTM-Hawkes with SANN}}
+	\label{fig7(b)}
+	\end{subfigure}
+\caption{{The under-fitted part is still found with HIP (the coefficient of exogenous event is 0.6) while both algorithm perform great in prediction resulting 76.9 and 40.7 MSE respectively.}}
+\end{adjustwidth}
+\end{figure}
+
+\begin{table}[H]
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\caption{{\bf MSE and Accuracy}}
+\begin{tabular}{|l|l|l|l|} 
+\hline
+\multicolumn{2}{|c|}{\bf HIP} & 
+\multicolumn{2}{c|}{\bf LSTM-Hawkes}\\ \thickhline
+
+\textbf{Correlation Coefficient} & 
+\textbf{MSE} & 
+\textbf{Method} & 
+\textbf{MSE}\\ \hline
+
+0.20299594548747 
+\quad \quad \quad \quad \quad & 
+801.44661263499 \quad \quad \quad \ \ & 
+Nelder-Mead &
+48.0034938190 \quad \quad \quad \ \\ \hline
+
+0.40473704703628 &
+101.32908279598 &
+BFGS with Hessian Matrix &
+41.3346206943\\ \hline
+
+0.60048848461137 & 
+76.966689384563 & 
+Conjugate Gradient Descent
+\quad \quad \quad \quad \quad & 
+42.6831118624\\ \hline
+
+0.79396502231167 & 
+84.072450398227 & 
+SANN & 
+40.7298560311\\ \hline
+
+\multicolumn{2}{|c|}{Average Accuracy: 0.741641169307} & 
+\multicolumn{2}{c|}{Average Accuracy: 0.882077335865}\\ \hline
+\end{tabular}
+
+\begin{flushleft} MSE and Accuracy where the moving average trend is monotonically increasing.
+\end{flushleft}
+\label{table3}
+\end{adjustwidth}
+\end{table}
+% Table 3 ending
+
+%$\newline \newline \newline $ \\
+Pertaining to the compatibility test with various convex optimization algorithms based on both gradient descent method and Newtonian method, we could prove that LSTM-Hawkes has great compatibility with all of the tests. We set up our model for the compatibility test with Nelder-Mead~\cite{bib23}, BFGS with Hessian Matrix~\cite{bib24}, Conjugate Gradient Descent~\cite{bib25}, and Simulated Annealing~\cite{bib26} and have our model optimized by estimating hyper parameters with the convex optimization functions mentioned above. Fig 8 shows learning results based on these optimization functions and we could discover that the full interquartile range (IRQ) of MAE is a lot smaller than that of HIP.  Also, since our model is not dependent with exogenous data to refer, the outlier-points cannot be found. It is expected that compatibility  with different optimization algorithms will always be guaranteed.
+%
+\begin{figure}[H]
+\centering
+ %\includegraphics[width=3in]{./MAE_quantile.png}
+ \includegraphics[width=2.65in]{./MAE2.png}
+ \caption{{\bf Comparability Test} Full quantile range of Mean Absolute Error result of both HIP and LSTM-Hawkes.}
+ \label{fig8}
+\end{figure}
+
+Lastly, when we assessed the score metric, Eq~(\ref{eq:14}), of the two models, we were able to see that the LSTM-Hawkes model always obtained a greater negative error score than that of the HIP model. Thus, this always resulted in a lower score metric for the LSTM-Hawkes model, proving it's greater accuracy of prediction and precision of fit.  
+\section*{Conclusion}
+
+\textbf{Conclusion.	}
+In 2014, Ian Goodfellow suggested Generative Adversarial  Network (GAN)~\cite{bib27}. The combination of generative model and discriminative model was a brilliant approach which maximizes the ability of a pair of discriminative model and generative model. We also aimed to build a hybrid model to apply to forecasting. However, it was practically difficult to apply models such as GAN in Ad Tech due to its high computations. Our Hawkes model is designed as a single-layer perceptron consisted of a much fewer number of parameters than those of feature driven Neural Network while it still predicts/models the posterior distribution accurate and stable. By adapting Hawkes as generative model instead of Neural Network, we can expect easier implementation and computation efficiency. Also, by adapting LSTM as predictive model, higher forecast accuracy is expected to be obtained in comparison to the existing Hawkes Model.\newline\newline
+\textbf{Future Work.	}	These days, to tract more consumers, advertisers strongly focus on conversion events which actually make sales. Thus, mostly mobile advertising bidding is on a basis of conversion events such as download, purchase or add to cart. However, since conversion event occurs rare, existing models including Hawkes and other Neural Network models have difficulties in predicting its posterior distribution.
+In the future research, we plan to develop/implement a Conversion Ratio (CVR) prediction model which overcomes data sparsity problem.
+ 
+
+%\begin{table}[ht]
+%\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+%\centering
+%\caption{
+%{\bf Table caption Nulla mi mi, venenatis sed ipsum varius, volutpat euismod diam.}}
+%\begin{tabular}{|l+l|l|l|l|l|l|l|}
+%\hline
+%\multicolumn{4}{|l|}{\bf Heading1} & \multicolumn{4}{|l|}{\bf Heading2}\\ \thickhline
+%$cell1 row1$ & cell2 row 1 & cell3 row 1 & cell4 row 1 & cell5 row 1 & cell6 row 1 & cell7 row 1 & cell8 row 1\\ \hline
+%$cell1 row2$ & cell2 row 2 & cell3 row 2 & cell4 row 2 & cell5 row 2 & cell6 row 2 & cell7 row 2 & cell8 row 2\\ \hline
+%$cell1 row3$ & cell2 row 3 & cell3 row 3 & cell4 row 3 & cell5 row 3 & cell6 row 3 & cell7 row 3 & cell8 row 3\\ \hline
+%\end{tabular}
+%\begin{flushleft} Table notes Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed.
+%\end{flushleft}
+%\label{table1}
+%\end{adjustwidth}
+%\end{table}
+
+
+\begin{figure}[t]
+\label{fig9}
+\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+	\centering
+	\begin{subfigure}[b]{0.43\paperwidth}
+	\includegraphics[width=0.43\paperwidth]{./left_score.png}\caption{\centering{\bf Test Section 2: Increasing Trend}}
+	\label{fig9(a)}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.43\paperwidth}\includegraphics[width=0.43\paperwidth]{./right_score.png}
+	\caption{\centering{\bf Test Section 1: Decreasing Trend}}
+	\label{fig9(b)}
+	\end{subfigure}
+\caption{{Under the circumstance that the moving average of ad clicks slopes downward, the HIP gets a higher error score where the distance mark $d$ in Eq~(\ref{eq:14} is negative, and vice versa where the moving average of ad clicks slopes upward.}}
+\end{adjustwidth}
+\end{figure}
+
+
+%\section*{Conclusion}
+%\textbf{Conclusion.	}
+%In 2014, Ian Goodfellow suggested Generative Adversarial  Network (GAN)~\cite{bib27}. The combination of generative model and discriminative model was a brilliant approach which maximizes the ability of a pair of discriminative model and generative model. We also aimed to build a hybrid model to apply to forecasting. However, it was practically difficult to apply models such as GAN in Ad Tech due to its high computations. Our Hawkes model is designed as a single-layer perceptron consisted of a much fewer number of parameters than those of feature driven Neural Network while it still predicts/models the posterior distribution accurate and stable. By adapting Hawkes as generative model instead of Neural Network, we can expect easier implementation and computation efficiency. Also, by adapting LSTM as predictive model, higher forecast accuracy is expected to be obtained in comparison to the existing Hawkes Model.\newline\newline
+%\textbf{Future Work.	}	These days, to tract more consumers, advertisers strongly focus on conversion events which actually make sales. Thus, mostly mobile advertising bidding is on a basis of conversion events such as download, purchase or add to cart. However, since conversion event occurs rare, existing models including Hawkes and other Neural Network models have difficulties in predicting its posterior distribution.
+%In the future research, we plan to develop/implement a Conversion Ratio (CVR) prediction model which overcomes data sparsity problem.
+
+
+
+%% Place tables after the first paragraph in which they are cited.
+%\begin{table}[!ht]
+%\begin{adjustwidth}{-2.25in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+%\centering
+%\caption{
+%{\bf Table caption Nulla mi mi, venenatis sed ipsum varius, volutpat euismod diam.}}
+%\begin{tabular}{|l+l|l|l|l|l|l|l|}
+%\hline
+%\multicolumn{4}{|l|}{\bf Heading1} & \multicolumn{4}{|l|}{\bf Heading2}\\ \thickhline
+%$cell1 row1$ & cell2 row 1 & cell3 row 1 & cell4 row 1 & cell5 row 1 & cell6 row 1 & cell7 row 1 & cell8 row 1\\ \hline
+%$cell1 row2$ & cell2 row 2 & cell3 row 2 & cell4 row 2 & cell5 row 2 & cell6 row 2 & cell7 row 2 & cell8 row 2\\ \hline
+%$cell1 row3$ & cell2 row 3 & cell3 row 3 & cell4 row 3 & cell5 row 3 & cell6 row 3 & cell7 row 3 & cell8 row 3\\ \hline
+%\end{tabular}
+%\begin{flushleft} Table notes Phasellus venenatis, tortor nec vestibulum mattis, massa tortor interdum felis, nec pellentesque metus tortor nec nisl. Ut ornare mauris tellus, vel dapibus arcu suscipit sed.
+%\end{flushleft}
+%\label{table1}
+%\end{adjustwidth}
+%\end{table}
+%
+
+%PLOS does not support heading levels beyond the 3rd (no 4th level headings).
+%\subsection*{\lorem\ and \ipsum\ nunc blandit a tortor}
+%\subsubsection*{3rd level heading} 
+%Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque. Quisque augue sem, tincidunt sit amet feugiat eget, ullamcorper sed velit. Sed non aliquet felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo justo ac dui pretium imperdiet. Sed suscipit iaculis mi at feugiat. 
+
+%\begin{enumerate}
+%	\item{react}
+%	\item{diffuse free particles}
+%	\item{increment time by dt and go to 1}
+%\end{enumerate}
+%
+%\begin{itemize}
+%	\item First bulleted item.
+%	\item Second bulleted item.
+%	\item Third bulleted item.
+%\end{itemize}
+
+
+%$\newline$
+ 
+%\section*{Supporting information}%
+%% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+%\paragraph*{S1 Fig.}
+%\label{S1_Fig}
+%{\bf Bold the title sentence.} Add descriptive text after the title of the item (optional).
+%
+%\paragraph*{S2 Fig.}
+%\label{S2_Fig}
+%{\bf Lorem ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+%
+%\paragraph*{S1 File.}
+%\label{S1_File}
+%{\bf Lorem ipsum.}  Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+%
+%\paragraph*{S1 Video.}
+%\label{S1_Video}
+%{\bf Lorem ipsum.}  Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+%
+%\paragraph*{S1 Appendix.}
+%\label{S1_Appendix}
+%{\bf Lorem ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+%
+%\paragraph*{S1 Table.}
+%\label{S1_Table}
+%{\bf Lorem ipsum.} Maecenas convallis mauris sit amet sem ultrices gravida. Etiam eget sapien nibh. Sed ac ipsum eget enim egestas ullamcorper nec euismod ligula. Curabitur fringilla pulvinar lectus consectetur pellentesque.
+%
+\nolinenumbers
+
+% Either type in your references using
+% \begin{thebibliography}{}
+% \bibitem{}
+% Text
+% \end{thebibliography}
+%
+% or
+%
+% Compile your BiBTeX database using our plos2015.bst
+% style file and paste the contents of your .bbl file
+% here. See http://journals.plos.org/plosone/s/latex for 
+% step-by-step instructions.
+% 
+\begin{thebibliography}{10}
+
+\bibitem{bib1}
+\newblock{Advertising Expenditure Forecasts.}
+\newblock{Zenith Media report 2018.}
+
+\bibitem{bib2}
+Lee, Heejun, and Chang-Hoan Cho.
+\newblock Digital advertising: present and future prospects.
+\newblock International Journal of Advertising (2019): 1-10.
+
+\bibitem{bib3}
+Shin HyeRim.
+\newblock Mobile advertising market expenditure exceeded 2 trillion won.
+\newblock Cheil Worldwide 2018.
+
+\bibitem{bib4}Chowdhury, Humayun Kabir.
+\newblock{Consumer attitude toward mobile advertising in an emerging market: An empirical study.}
+\newblock International Journal of Mobile Marketing 1.2 (2006).
+
+\bibitem{bib5}
+\newblock REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL.
+
+\bibitem{bib6}Hawkes, Alan G.
+\newblock {Spectra of some self-exciting and mutually exciting point processes
+  functions}.
+\newblock Biometrika 58.1 (1971): 83-90.
+
+\bibitem{bib7}
+Juan, Yuchin.
+\newblock {Field-aware factorization machines for CTR prediction}.
+\newblock Proceedings of the 10th ACM Conference on Recommender Systems. ACM, 2016.
+
+\bibitem{bib8}
+Han, Min Ho.
+\newblock Retargeting advertising product recommending user device and service providing device, advertising product recommending system including the same, control method thereof, and non-transitory computer readable storage medium having computer program recorded thereon.
+\newblock U.S. Patent Application No. 15/320,632.
+
+\bibitem{bib9}
+Cross-platform HTTP debugging proxy server application. https://www.charlesproxy.com/overview/about-charles.
+
+\bibitem{bib10}
+Feller, W. 
+\newblock {(1971) Introduction to Probability Theory and Its Applications, Vol II (2nd edition),Wiley. Section I.3 ISBN 0-471-25709-5}.
+
+\bibitem{bib11}
+Rizoiu, Marian-Andrei.
+\newblock {Expecting to be hip: Hawkes intensity processes for social media popularity.}.
+\newblock {Proceedings of the 26th International Conference on World Wide Web. International World Wide Web Conferences Steering Committee, 2017.}
+
+\bibitem{bib12}
+Kwak, Haewoon.
+\newblock {What is Twitter, a social network or a news media?}.
+\newblock Proceedings of the 19th international conference on World wide web. AcM, 2010.
+
+\bibitem{bib13}
+Ahn, Yong-Yeol.
+\newblock {Analysis of topological characteristics of huge online social networking services}.
+\newblock Proceedings of the 16th international conference on World Wide Web. ACM, 2007.
+
+\bibitem{bib14}
+Ozaki, Tohru.
+\newblock {Maximum likelihood estimation of Hawkes' self-exciting point processes}.
+\newblock Annals of the Institute of Statistical Mathematics 31.1 (1979): 145-155.
+
+\bibitem{bib15}
+Hochreiter, Sepp, and Jürgen Schmidhuber.
+\newblock {Long short-term memory}.
+\newblock Neural computation 9.8 (1997): 1735-1780.
+
+\bibitem{bib16}
+Ogata, Yosihiko.
+\newblock {On Lewis' simulation method for point processes}.
+\newblock IEEE Transactions on Information Theory 27.1 (1981): 23-31. 
+
+\bibitem{bib17}
+Rasmussen, Jakob Gulddahl.
+\newblock {Temporal point processes: the conditional intensity function}.
+\newblock Lecture Notes, Jan (2011).
+
+\bibitem{bib18}Rubin, Izhak.
+\newblock {Regular point processes and their detection}.
+\newblock IEEE Transactions on Information Theory 18.5 (1972): 547-557.
+
+\bibitem{bib19}
+\newblock Lorenzen, F. Analysis of order clustering using high frequency data: A point process approach. Working Paper, 2012.
+
+\bibitem{bib20}
+$labs.criteo.com/wp-content/uploads/2014/07/criteo_conversion_logs.tar.gz$
+
+\bibitem{bib21}
+Rizoiu, Marian-Andrei, et al. "Expecting to be hip: Hawkes intensity processes for social media popularity." Proceedings of the 26th International Conference on World Wide Web. International World Wide Web Conferences Steering Committee, 2017. 
+
+\bibitem{bib22}
+Saxena, Abhinav, et al. “Damage propagation modeling for aircraft engine run-to-failure simulation." 2008 international conference on prognostics and health management. IEEE, 2008.
+
+\bibitem{bib23}
+McKinnon, Ken IM. “Convergence of the Nelder--Mead Simplex Method to a Nonstationary Point." SIAM Journal on Optimization 9.1 (1998): 148-158.
+
+\bibitem{bib24}
+Berahas, Albert S., Jorge Nocedal, and Martin Takác. “A multi-batch L-BFGS method for machine learning." Advances in Neural Information Processing Systems. 2016.
+
+\bibitem{bib25}Hestenes, Magnus Rudolph, and Eduard Stiefel. Methods of conjugate gradients for solving linear systems. Vol. 49. No. 1. Washington, DC: NBS, 1952.
+
+\bibitem{bib26}
+Granville, Vincent, Mirko Krivánek, and J-P. Rasson. “Simulated annealing: A proof of convergence." IEEE transactions on pattern analysis and machine intelligence 16.6 (1994): 652-656.
+
+\bibitem{bib27}
+Goodfellow, Ian, et al. “Generative adversarial nets." Advances in neural information processing systems. 2014.
+
+\bibitem{bib28}
+Improvement of the LPWAN AMI backhaul’s latency thanks to reinforcement learning algorithms 2018Rémi Bonnefoi
+
+\bibitem{bib29}
+Boubchir, Larbi, Somaya Al-Maadeed, and Ahmed Bouridane. “Undecimated wavelet-based Bayesian denoising in mixed Poisson-Gaussian noise with application on medical and biological images." 2014 4th International Conference on Image Processing Theory, Tools and Applications (IPTA). IEEE, 2014.
+
+\bibitem{bib30}
+Pérez, Patrick, Michel Gangnet, and Andrew Blake. “Poisson image editing." ACM Transactions on graphics (TOG) 22.3 (2003): 313-318. The 
+
+
+\end{thebibliography}
+
+
+
+\end{document}
+
